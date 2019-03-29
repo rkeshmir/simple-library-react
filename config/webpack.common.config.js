@@ -8,7 +8,8 @@ const config = {
     entry: './src/index.js',
     output: {
         filename: 'bundle.js',
-        path: commonPaths.outputPath
+        path: commonPaths.outputPath,
+        publicPath: '/'
     },
     module: {
         rules: [
@@ -48,6 +49,9 @@ const config = {
                 exclude: /node_modules/
             }
         ]
+    },
+    devServer: {
+        historyApiFallback: true,
     },
     plugins: [
         new webpack.ProgressPlugin(),

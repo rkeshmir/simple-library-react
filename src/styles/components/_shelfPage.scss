@@ -1,0 +1,49 @@
+.shelf-page {
+  .book{
+    .book-info{
+      display: flex;
+      flex-wrap: wrap;
+      .image {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+    .action {
+      display: flex;
+    }
+  }
+  .search-books{
+    .search-form{
+      display: flex;
+      justify-content: space-between;
+      .input-group {
+        width: 50%;
+      }
+      .clear-search {
+        cursor: pointer;
+      }
+    }
+    .found-books{
+      display: flex;
+      flex-wrap: wrap;
+      .found-book {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        width: 21%;
+        margin: 2%;
+        padding: 5px;
+        .rating{
+          .checked {
+            color: gold;
+          }
+        }
+        .action{
+          display: flex;
+          flex-direction: row-reverse;
+        }
+      }
+    }
+  }
+}

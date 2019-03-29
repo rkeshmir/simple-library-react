@@ -7,8 +7,8 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import { Header } from '../Header/Header';
 import { HomePage } from '../pages/HomePage';
-import { AboutPage } from '../pages/AboutPage';
-import { ZipCodesPage } from '../pages/ZipCodesPage';
+import ShelvesPage from '../pages/ShelvesPage';
+import ShelfPage from '../pages/ShelfPage';
 
 
 // COMPONENT
@@ -19,8 +19,8 @@ export const AppRouter = () => (
             <Header />            
             <Switch>
                 <Route path='/' component={HomePage} exact={true} />
-                <Route path='/zipcodes' component={ZipCodesPage} />
-                <Route path='/about' component={AboutPage} />
+                <Route path='/shelves' component={ShelvesPage} />
+                <Route path='/shelf/:title' component={ShelfPage} />
                 <Redirect to="/" />
             </Switch>
         </Fragment>

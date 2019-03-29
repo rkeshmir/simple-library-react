@@ -23,12 +23,7 @@ export const Header = () => (
                 </li>
                 <li className="nav-item">
                     <div className="nav-link">
-                        <NavLink to='/zipcodes' activeClassName='menu selected'>ZIP CODES</NavLink>
-                    </div>
-                </li>
-                <li className="nav-item">
-                    <div className="nav-link">
-                        <NavLink to='/about' activeClassName='menu selected'>ABOUT</NavLink>
+                        <NavLink to='/shelves' activeClassName='menu selected'>My Shelves</NavLink>
                     </div>
                 </li>
             </ul>

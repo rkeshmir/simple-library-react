@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "name": "Computer Networking",
+        "Writer": "Kurose ROSS",
+        "Publisher": "?",
+        "shelf": "science"
+    },
+    {
+        "id": 2,
+        "name": "The Sonnets",
+        "Writer": "William Shakespeare",
+        "Publisher": "Collector;s library in colors",
+        "shelf": "poetry"
+    }
+]
