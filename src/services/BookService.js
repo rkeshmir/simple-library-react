@@ -1,10 +1,9 @@
 // IMPORT DATA FROM STATIC JSON FILE
 
-import books from './books.json';
 import shelves from './shelves.json';
 
 let currentShelves = [].concat(shelves);
-let currentBooks = [].concat(books);
+let currentBooks = [];
 
 // COMPONENT
 
@@ -54,6 +53,7 @@ export const addBook = (shelf, book) => {
                 reject('Bad input parameters for adding a book to some shelf');
             }
             else if(currentBooks.filter(b=>b.id === book.id).length > 0) {
+                console.log('repeated');
                 reject('Book already exists in the library');
             }
             else {

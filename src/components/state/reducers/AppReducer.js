@@ -5,11 +5,11 @@ import { combineReducers } from 'redux';
 
 // IMPORT REDUCERS
 
-import { OrdersReducer } from './OrdersReducer';
+import { MessageReducer } from './MessageReducer';
 
 
 // EXPORT APP REDUCER
 
 export const AppReducer = combineReducers({
-    orders: OrdersReducer
+    message: MessageReducer
 });

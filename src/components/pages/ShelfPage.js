@@ -1,9 +1,13 @@
 // IMPORT PACKAGE REFERENCES
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import XMLParser from 'react-xml-parser';
+
 import {addBook, fetchBooks, searchBook} from '../../services/BookService';
+import {addMessage} from '../state/actions/MessageActions';
+import {SUCCESS, ERROR} from '../shared/Constants';
 
 // COMPONENT
 class ShelfPage extends React.Component {
@@ -17,7 +21,6 @@ class ShelfPage extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props.match.params.title);
         fetchBooks(this.props.match.params.title).then(books=>this.setState({books}));
     }
 
@@ -29,10 +32,11 @@ class ShelfPage extends React.Component {
         const shelf = this.props.match.params.title;
         if(!shelf || !shelf.length || !book)
             return;
-        console.log('add book to ' + shelf, book);
+        console.log('adding book to ' + shelf, book);
         addBook(shelf, book).then(books=>{
-            this.setState({books,message:{status:'success', content:'New book successfully added to ' + shelf }});
-        }, (error)=>this.setState({message:{status:'error', content:error}}));
+            this.setState({books});
+            this.props.addMessage('New book successfully added to ' + shelf, SUCCESS);
+        }, (error)=>this.props.addMessage(error, ERROR));
     }
 
     removeBook(shelf) {
@@ -190,7 +194,12 @@ class ShelfPage extends React.Component {
     }
 }
 ShelfPage.propTypes = {
-    match: PropTypes.object.isRequired
+    match: PropTypes.object.isRequired,
+    addMessage: PropTypes.func
 };
-
-export default withRouter(ShelfPage);
+const mapDispatchToProps = dispatch => {
+    return {
+        addMessage: (content, status)=>dispatch(addMessage(content, status))
+    };
+};
+export default connect(null, mapDispatchToProps)(withRouter(ShelfPage));
