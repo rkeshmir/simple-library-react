@@ -15,7 +15,7 @@ class Message extends React.Component {
         super(props);
     }
     render() {
-        return <React.Fragment>{this.props.messages.length && <div aria-live="polite" aria-atomic="true" className="message-container">
+        return <React.Fragment>{this.props.messages.length > 0 && <div aria-live="polite" aria-atomic="true" className="message-container">
             {
                 this.props.messages.map(message=><div key={message.id} className="toast show mb-2">
                     <div className="toast-header">

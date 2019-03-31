@@ -4,10 +4,11 @@ import React from 'react';
 
 // COMPONENT
 
-const HomePage = () => (
-    <main>
+const HomePage = () => {
+    const title = 'Simple Library';
+    return <main>
         <div className="jumbotron jumbotron-fluid text-dark bg-light animated fadeIn">
-            <h1 className="display-6 text-center">Simple Library</h1>
+            <h1 className="display-6 text-center">{title}</h1>
             <p className="lead text-center">
                 The most naive virtual library that you can keep track of books in your real library.
             </p>
@@ -17,7 +18,7 @@ const HomePage = () => (
                 The presentation topic is explaining React to Angular developers.
             </div>
         </div>
-    </main>
-);
+    </main>;
+};
 
 export { HomePage };

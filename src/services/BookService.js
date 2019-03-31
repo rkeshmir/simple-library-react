@@ -34,16 +34,7 @@ export const searchBook = (query) => {
                 'Access-Control-Allow-Methods': 'GET, POST, PUT',
                 'Access-Control-Allow-Headers': 'Content-Type',
             })
-        })
-        /*.then(blob => console.log(blob),
-            e=>console.log(e))*/
-        .then(response => {
-            console.table(response);
-            console.log('response keys',Object.keys(response));
-            console.log('response type',typeof response);
-            console.log('response text',response);
-            return response;
-        }, e=>console.log(e));
+        });
 };
 export const addBook = (shelf, book) => {
     return new Promise((resolve, reject) => {

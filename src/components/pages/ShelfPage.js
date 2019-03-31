@@ -59,11 +59,10 @@ class ShelfPage extends React.Component {
                 const parsedData = new XMLParser().parseFromString(data);
                 const foundBooks = parsedData.getElementsByTagName('work').map(work=>this.parseBook(work));
                 console.log('foundBooks', foundBooks);
-                this.setState({foundBooks,message:null});
+                this.setState({foundBooks});
             });
         }, (error)=>{
             console.log('errorBooks',error);
-            this.setState({message:{status:'error', content:error}});
         });
     }
 
@@ -193,10 +192,15 @@ class ShelfPage extends React.Component {
         </div>;
     }
 }
+
+
 ShelfPage.propTypes = {
     match: PropTypes.object.isRequired,
     addMessage: PropTypes.func
 };
+
+
+
 const mapDispatchToProps = dispatch => {
     return {
         addMessage: (content, status)=>dispatch(addMessage(content, status))

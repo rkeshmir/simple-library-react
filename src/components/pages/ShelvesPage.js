@@ -28,16 +28,16 @@ export default class ShelvesPage extends React.Component {
             return;
         console.log('add shelf', shelf);
         addShelf(shelf).then(shelves=>{
-            this.setState({shelves,message:{status:'success', content:'New shelf successfully added'}});
-            this.newShelf = '';
-        }, (error)=>this.setState({message:{status:'error', content:error}}));
+            // this.newShelf = '';
+            document.getElementById('new-shelf').value = '';
+            this.setState({shelves});
+        }, ()=>console.error('error'));
     }
 
     removeShelf(shelf) {
         removeShelf(shelf).then(shelves=>{
-            console.log('removeShelf', shelves);
-            this.setState({shelves,message:{status:'success', content:shelf + ' successfully removed'}});
-        }, (error)=>this.setState({message:{status:'error', content:error}}));
+            this.setState({shelves});
+        });
     }
 
     render() {
@@ -54,7 +54,7 @@ export default class ShelvesPage extends React.Component {
                     </li>)
                 }
                 <li className={'list-group-item d-flex justify-content-between align-items-center shelf add'}>
-                    <input onChange={(e)=>this.newShelf = e.target.value} type="text"/>
+                    <input id='new-shelf' onChange={(e)=>this.newShelf = e.target.value} type="text"/>
                     <i className={'fa fa-plus'} onClick={this.addShelf.bind(this)}/>
                 </li>
             </ul>
