@@ -1,4 +1,7 @@
 .shelf-page {
+  .books{
+    max-height: 40vh;
+  }
   .book{
     .book-info{
       display: flex;
@@ -28,20 +31,27 @@
       flex-wrap: wrap;
       .found-book {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: space-between;
 
-        width: 21%;
-        margin: 2%;
-        padding: 5px;
-        .rating{
-          .checked {
-            color: gold;
-          }
-        }
-        .action{
+        width: 48%;
+        margin: 1%;
+        padding: 2px;
+        .left, .right {
+          width: 50%;
           display: flex;
-          flex-direction: row-reverse;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 3px;
+          .rating{
+            .checked {
+              color: gold;
+            }
+          }
+          .action{
+            display: flex;
+            flex-direction: row-reverse;
+          }
         }
       }
     }

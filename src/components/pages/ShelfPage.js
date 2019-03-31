@@ -41,12 +41,7 @@ class ShelfPage extends React.Component {
 
     removeBook(shelf) {
         console.log('removeBook', shelf);
-        /*
-        removeShelf(shelf).then(shelves=>{
-            console.log('removeShelf', shelves);
-            this.setState({shelves,message:{status:'success', content:shelf + ' successfully removed'}});
-        }, (error)=>this.setState({message:{status:'error', content:error}}));
-*/
+        //TODO: implement remove book after is it is implemented in bookService
     }
 
     searchBook(e) {
@@ -118,36 +113,36 @@ class ShelfPage extends React.Component {
             <h1 className={'mb-5'}>
                 <b>{title}</b> shelf
             </h1>
-            {
-                this.state.books.map(book=> <div key={book.id} className="alert alert-secondary mb-5 book">
-                    <div className="book-info">
-                        <div className="info col-md-8">
-                            <h4 className="alert-heading">{book.title}</h4>
-                            <div>
-                                Author: {book.author}
-                            </div>
-                            {this.getDate(book) && <div>
-                                Published on: {this.getDate(book)}
-                            </div>}
-                        </div>
-                        <div className="image col-md-4">
+            {this.state.books.length < 1 && <div className={'alert alert-primary'}>
+                {this.props.match.params.title} is empty!
+            </div>}
+            {this.state.books.length > 0 && <table className={'table'}>
+                <tr>
+                    <th></th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Publication Date</th>
+                    <th>Action</th>
+                </tr>
+                {
+                    this.state.books.map(book=> <tr key={book.id}>
+                        <td>
                             <img src={book.small_image_url} alt="Image not found"/>
-                        </div>
-                    </div>
-                    <hr/>
-                    <div className="action">
-                        <span className={'remove m-3'}>
-                            <i className={'fa fa-trash mr-1'}/>
-                        Remove from shelf
-                        </span>
-                        <span className={'add-to-cart m-3'}>
-                            <i className={'fa fa-cart-plus mr-1'}/>
-                        Add to cart
-                        </span>
-                    </div>
+                        </td>
+                        <td>{book.title}</td>
+                        <td>
+                            {book.author}
+                        </td>
+                        <td>{this.getDate(book) ? this.getDate(book) : 'Unknown'}</td>
+                        <td >
+                            <span className={'remove m-3'} title={'Remove from shelf'}>
+                                <i className={'fa fa-trash mr-1'}/>
+                            </span>
+                        </td>
+                    </tr>)
+                }
+            </table>}
 
-                </div>)
-            }
             <div className={'search-books'}>
                 <form className={'search-form'} onSubmit={this.searchBook.bind(this)}>
                     <div className="input-group mb-3">
@@ -168,22 +163,26 @@ class ShelfPage extends React.Component {
                 <div className={'found-books'}>
                     {
                         this.state.foundBooks.map(book=><div key={book.id} className={'found-book card'}>
-                            <img src={book.image_url} className="card-img-top" alt="Image not found"/>
-                            <h6>{book.title}</h6>
-                            <div>
-                                Author: {book.author}
+                            <div className="left">
+                                <img src={book.image_url} className="card-img-top" alt="Image not found"/>
                             </div>
-                            {this.getDate(book) && <div>
-                                Published on: {this.getDate(book)}
-                            </div>}
-                            <div className={'rating'}>
-                                {this.getRating(book)}
-                            </div>
-                            <div className={'action'}>
-                                <button type="button" className="btn btn-outline-primary"
-                                    onClick={()=>this.addBook(book)}>
-                                    Add to {title}
-                                </button>
+                            <div className="right">
+                                <h6>{book.title}</h6>
+                                <div>
+                                    Author: {book.author}
+                                </div>
+                                {this.getDate(book) && <div>
+                                    Published on: {this.getDate(book)}
+                                </div>}
+                                <div className={'rating'}>
+                                    {this.getRating(book)}
+                                </div>
+                                <div className={'action'}>
+                                    <button type="button" className="btn btn-outline-primary"
+                                            onClick={()=>this.addBook(book)}>
+                                        Add to {title}
+                                    </button>
+                                </div>
                             </div>
                         </div>)
                     }
