@@ -36,6 +36,10 @@
 
         width: 48%;
         margin: 1%;
+        @media (max-width: 400px) {
+          width: 100%;
+          margin: 0;
+        }
         padding: 2px;
         .left, .right {
           width: 50%;

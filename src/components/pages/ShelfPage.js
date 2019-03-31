@@ -179,7 +179,7 @@ class ShelfPage extends React.Component {
                                 </div>
                                 <div className={'action'}>
                                     <button type="button" className="btn btn-outline-primary"
-                                            onClick={()=>this.addBook(book)}>
+                                        onClick={()=>this.addBook(book)}>
                                         Add to {title}
                                     </button>
                                 </div>
@@ -191,7 +191,6 @@ class ShelfPage extends React.Component {
         </div>;
     }
 }
-
 
 ShelfPage.propTypes = {
     match: PropTypes.object.isRequired,
